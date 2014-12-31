@@ -1,0 +1,11 @@
+head
+  title alex&laura2015
+
+template(name='layout')
+  +yield
+
+template(name='splash')
+  h1 Alex & Laura
+  h2 25 JULY 2015
+  a(href='{{pathFor "details"}}') Details
+  a(href='{{pathFor "guestLogin"}}') RSVP

@@ -1,0 +1,19 @@
+template(name='guestDetailsEdit')
+  h1 Edit Guest Details
+  hr
+  a.save Save
+  a.delete Delete
+  .label Name
+  input(name='name' value='#{name}' placeholder='Enter name')
+  .label Ticket
+  input(name='ticket' value='#{ticket}' placeholder='Enter ticket')
+  .label Status
+  select(name='status')
+    option Pending
+    option Accepted
+    option Declined
+  .label Dietary Requests
+  input(name='diet' value='#{diet}' placeholder='#{diet}')
+  .label Additional Guests
+  +each guestRequests
+    +guestRequest
