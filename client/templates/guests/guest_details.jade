@@ -1,0 +1,9 @@
+template(name='guestDetails')
+  h1     
+    a(href='{{pathFor "guests"}}') back
+    | Guest Details
+  hr
+  a(href='{{pathFor "guestDetailsEdit"}}') Edit
+  p Name: #{name}
+  p Ticket: #{ticket}
+  p Status: #{status}

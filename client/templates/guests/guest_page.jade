@@ -1,0 +1,13 @@
+template(name='guestPage')
+  h1 Welcome #{name}
+  hr
+  a(href='{{pathFor "details"}}') Details
+  p Thank you for going online!
+  unless accepted
+    a.Accepted Accept
+  unless declined
+    a.Declined Decline
+  if accepted
+    a Dietary Requests
+    a Additional Guests
+    a Guestbook 

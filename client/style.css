@@ -1,0 +1,24 @@
+a {
+  cursor: pointer;
+  color: blue;
+}
+
+a:hover {
+  color: darkblue;
+}
+
+a + a {
+  margin-left: 8px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both; 
+}

@@ -1,0 +1,19 @@
+template(name='guests')
+  unless currentUser
+    +loginButtons
+  else 
+    h1.left Guests
+      form.new-guest
+        input(name='name' placeholder='Guest name' autocomplete='off')
+        button(type='submit') +
+    hr.clear
+
+    table
+      thead
+        tr
+          th Name
+          th Ticket
+          th Status
+      tbody
+        +each guests
+          +guest
