@@ -1,12 +1,16 @@
 template(name='guests')
+  a(href="{{pathFor 'splash'}}") Back
   unless currentUser
     +loginButtons
   else 
-    h1.left Guests
-      form.new-guest
-        input(name='name' placeholder='Guest name' autocomplete='off')
-        button(type='submit') +
-    hr.clear
+    h1 Guests
+    form.new-guest
+      label Add Guest
+      input(name='name' placeholder='Guest name' autocomplete='off')
+      button(type='submit') +
+    hr
+    label Search
+    input.search(placeholder='Guest name' autocomplete='off')
 
     table
       thead

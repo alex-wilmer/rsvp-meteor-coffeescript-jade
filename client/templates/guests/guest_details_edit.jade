@@ -9,9 +9,9 @@ template(name='guestDetailsEdit')
   input(name='ticket' value='#{ticket}' placeholder='Enter ticket')
   .label Status
   select(name='status')
-    option Pending
-    option Accepted
-    option Declined
+    option(selected="{{equals status 'Pending'}}") Pending
+    option(selected="{{equals status 'Accepted'}}") Accepted
+    option(selected="{{equals status 'Declined'}}") Declined
   .label Dietary Requests
   input(name='diet' value='#{diet}' placeholder='#{diet}')
   .label Additional Guests

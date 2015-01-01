@@ -1,3 +1,11 @@
+Template.guests.helpers
+
+  guests: ->
+    search = Session.get 'searchTerm'
+    if search 
+      return Guests.find name: new RegExp search, 'i'
+    else return Guests.find()
+
 Template.guests.events
 
   'submit .new-guest': (e) ->
@@ -12,7 +20,7 @@ Template.guests.events
     guest = 
       name: name
       ticket: pad 5, Math.floor Math.random() * 10000
-      status: 'pending'
+      status: 'Pending'
      
     Meteor.call 'guestInsert', guest, (error) ->
       if error
@@ -20,12 +28,15 @@ Template.guests.events
 
     e.target.name.value = ''
 
+  'keydown .search': (e) ->
+    setSearchTerm = -> Session.set 'searchTerm', e.target.value
+    setTimeout setSearchTerm, 0
 
 pad = (len, num) ->
   
   rounds = len - num.toString().length
   
-  for round in rounds
+  for round in [1..rounds]
     num = '0' + num
     
   return num
