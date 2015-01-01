@@ -2,7 +2,6 @@ Template.details.created = ->
   Session.set 'detailsContent', 'detailsGeneral'
 
 Template.details.helpers
-
   home: ->
     return if Session.get 'currentGuest' then 'home' else ''
 
@@ -10,6 +9,5 @@ Template.details.helpers
     return Template[Session.get 'detailsContent']
 
 Template.details.events
-
   'click .menu a': (e) ->
-    Session.set 'detailsContent', e.target.classList[0]
+    Session.set 'detailsContent', e.target.id

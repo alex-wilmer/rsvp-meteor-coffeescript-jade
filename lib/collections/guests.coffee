@@ -1,17 +1,14 @@
 @Guests = new Mongo.Collection 'guests'
 
 Guests.allow
-
   remove: ->
-    return !!Meteor.userId()
-  
+    return Meteor.user()
+
   update: ->
-    return !!Meteor.userId()
+    return Meteor.user()
 
 Meteor.methods
-
   guestInsert: (guest) ->
-    
     check guest, 
       name: String
       ticket: String
@@ -26,12 +23,11 @@ Meteor.methods
     Guests.insert guest
   
   attemptLogin: (ticket) ->
-    
     check ticket, String
-    
+
     guest = Guests.findOne ticket:ticket
      
     if !guest
       return wrongTicket: true 
-    
+
     return guestId: guest._id

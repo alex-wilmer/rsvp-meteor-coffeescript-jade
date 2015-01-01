@@ -1,7 +1,5 @@
 Template.guestLogin.events
-
   'submit form': (e) ->
-    
     e.preventDefault()
     
     ticket = e.target.ticket.value
@@ -10,7 +8,6 @@ Template.guestLogin.events
       return alert 'Please enter a ticket!'
 
     Meteor.call 'attemptLogin', ticket, (error, result) -> 
-    
       if error
         return alert error.error
         

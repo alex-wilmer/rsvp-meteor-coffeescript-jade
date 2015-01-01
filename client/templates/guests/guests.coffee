@@ -1,5 +1,4 @@
 Template.guests.helpers
-
   guests: ->
     search = Session.get 'searchTerm'
     if search 
@@ -7,9 +6,7 @@ Template.guests.helpers
     else return Guests.find()
 
 Template.guests.events
-
   'submit .new-guest': (e) ->
-    
     e.preventDefault()
       
     name = e.target.name.value
@@ -33,10 +30,7 @@ Template.guests.events
     setTimeout setSearchTerm, 0
 
 pad = (len, num) ->
-  
   rounds = len - num.toString().length
-  
   for round in [1..rounds]
     num = '0' + num
-    
   return num

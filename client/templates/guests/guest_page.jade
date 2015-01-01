@@ -4,9 +4,9 @@ template(name='guestPage')
   a(href='{{pathFor "details"}}') Details
   p Thank you for going online!
   unless accepted
-    a.Accepted Accept
+    a#Accepted Accept
   unless declined
-    a.Declined Decline
+    a#Declined Decline
   if accepted
     a Dietary Requests
     a Additional Guests
