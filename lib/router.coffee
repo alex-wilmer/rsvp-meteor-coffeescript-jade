@@ -11,30 +11,28 @@ Router.route '/home',
   waitOn: ->
     return Meteor.subscribe 'guest', Session.get 'currentGuest'
   data: ->
-    return Guests.findOne Session.get 'currentGuest'
+    return Guests.findOne()
 
 # Admin Routes
 
 Router.route '/guests', 
   name: 'guests'
   waitOn: ->
-    return Meteor.subscribe 'guests' 
-  data: ->
-    return guests: Guests.find() 
+    return Meteor.subscribe 'guests'
 
 Router.route '/guests/:_id', 
   name: 'guestDetails'
   waitOn: ->
     return Meteor.subscribe 'guest', this.params._id
   data: ->
-    return Guests.findOne this.params._id
+    return Guests.findOne()
 
 Router.route '/guests/:_id/edit',
   name: 'guestDetailsEdit'
   waitOn: ->
     return Meteor.subscribe 'guest', this.params._id
   data: ->
-    return Guests.findOne this.params._id
+    return Guests.findOne()
 
 # Hooks
 

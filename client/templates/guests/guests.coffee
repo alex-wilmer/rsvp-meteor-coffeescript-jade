@@ -3,7 +3,7 @@ Template.guests.helpers
     search = Session.get 'searchTerm'
     if search 
       return Guests.find name: new RegExp search, 'i'
-    else return Guests.find()
+    else return Guests.find {}, sort: name: 1
 
 Template.guests.events
   'submit .new-guest': (e) ->
@@ -19,9 +19,12 @@ Template.guests.events
       ticket: pad 5, Math.floor Math.random() * 10000
       status: 'Pending'
      
-    Meteor.call 'guestInsert', guest, (error) ->
+    Meteor.call 'guestInsert', guest, (error, result) ->
       if error
         alert error.error
+
+      if result.guestExists
+        alert 'This guest already exists.'
 
     e.target.name.value = ''
 

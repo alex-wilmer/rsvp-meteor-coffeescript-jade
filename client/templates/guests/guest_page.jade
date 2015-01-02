@@ -1,13 +1,23 @@
 template(name='guestPage')
   h1 Welcome #{name}
   hr
-  a(href='{{pathFor "details"}}') Details
-  p Thank you for going online!
+  a(href="{{pathFor 'details'}}") Details
+  if pending
+    p Thank you for going online!
   unless accepted
-    a#Accepted Accept
+    if declined
+      p.
+        We're so sorry you can't make it! 
+        You can come back here at any time in case your plans change.
+    a#Accepted.set-status Accept
   unless declined
-    a#Declined Decline
+    if accepted
+      p.
+        Wonderful! From here you can request additional guests,
+        let us know about any dietary restrictions and sign the guestbook!
+    a#Declined.set-status Decline
   if accepted
     a Dietary Requests
     a Additional Guests
+  unless pending
     a Guestbook 
